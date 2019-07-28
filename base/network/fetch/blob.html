@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>fetch-blob</title>
+</head>
+
+<body>
+  <input type="button" value="读取" id="btn">
+  <img id="img" src="" alt="">
+
+  <script>
+    let oBtn = document.getElementById('btn')
+    let oImg = document.getElementById('img')
+
+    oBtn.onclick = async () => {
+      //1.请求
+      let res=await fetch('../data/1.png');
+      //2.解析
+      let data=await res.blob();
+      oImg.src = URL.createObjectURL(data);
+    }
+  </script>
+</body>
+
+</html>

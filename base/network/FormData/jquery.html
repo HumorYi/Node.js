@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>jquery</title>
+</head>
+
+<body>
+  <form id="form1" action="http://localhost:8080/" method="post">
+    用户：<input type="text" name="user" /><br>
+    密码：<input type="password" name="pass" /><br>
+    文件：<input type="file" name="f1" /><br>
+    <input type="submit" value="提交">
+  </form>
+
+  <script src="../jquery.js"></script>
+  <script>
+    $('#form1').on('submit', function () {
+      let formData = new FormData(this);
+
+      $.ajax({
+        url: this.action,
+        type: this.method,
+        data: formData,
+        // 告诉jquery不要处理data数据
+        processData: false,
+        // 告诉jquery不要处理data数据类型
+        contentType: false
+      }).then(res => {
+        alert('成功');
+      }).catch(err => {
+        alert('失败');
+      });
+
+      return false;
+    });
+  </script>
+</body>
+
+</html>

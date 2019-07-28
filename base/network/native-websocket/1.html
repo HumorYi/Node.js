@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>native-websocket</title>
+</head>
+<body>
+  <script>
+    /*
+      增加的header属性：
+        Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+        Sec-WebSocket-Key: s88nyzhUHsN7eAELy8QvpA==
+        Sec-WebSocket-Version: 13
+        // 升级协议为websocket
+        Upgrade: websocket
+    */
+    let ws = new WebSocket('ws://localhost:8080/')
+    ws.onopen = () => {
+      console.log('connection');
+    }
+    ws.onmessage = () => {}
+    ws.onclose = () => {}
+    ws.onerror = () => {}
+  </script>
+</body>
+</html>
