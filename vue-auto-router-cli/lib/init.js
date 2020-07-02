@@ -3,6 +3,7 @@ const figlet = promisify(require('figlet'))
 const clear = require('clear')
 const chalk = require('chalk')
 const { clone } = require('./download')
+const open = require('open')
 
 const spawn = async (...args) =>
   new Promise(resolve => {
@@ -44,7 +45,7 @@ To get Start:
     `)
   )
 
-  const open = require('open')
   open('http://localhost:8080')
+
   await spawn('npm.cmd', ['run', 'serve'], { cwd: `./${name}` })
 }
